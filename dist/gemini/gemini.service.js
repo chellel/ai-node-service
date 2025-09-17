@@ -6,19 +6,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.GeminiService = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const gemini_module_1 = require("./gemini/gemini.module");
-let AppModule = class AppModule {
+let GeminiService = class GeminiService {
+    create(createGeminiDto) {
+        return 'This action adds a new gemini';
+    }
+    findAll() {
+        return `This action returns all gemini`;
+    }
+    findOne(id) {
+        return `This action returns a #${id} gemini`;
+    }
+    update(id, updateGeminiDto) {
+        return `This action updates a #${id} gemini`;
+    }
+    remove(id) {
+        return `This action removes a #${id} gemini`;
+    }
 };
-exports.AppModule = AppModule;
-exports.AppModule = AppModule = __decorate([
-    (0, common_1.Module)({
-        imports: [gemini_module_1.GeminiModule],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
-    })
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+exports.GeminiService = GeminiService;
+exports.GeminiService = GeminiService = __decorate([
+    (0, common_1.Injectable)()
+], GeminiService);
+//# sourceMappingURL=gemini.service.js.map
