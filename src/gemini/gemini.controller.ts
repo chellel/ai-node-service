@@ -37,7 +37,12 @@ export class GeminiController {
   @Post("getGeminiContent")
   @ApiOperation({ summary: "调用gemini能力" })
   async getGeminiContent(@Body() body): Promise<any> {
-    return this.geminiService.generateContent(body);
+    console.log("body", body)
+    const result = await this.geminiService.generateContent(body);
+    return {
+      success: true,
+      data: result
+    }
     // return {
     //   code: 0,
     //   message: 'ok',

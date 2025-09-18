@@ -8,5 +8,7 @@ export declare class GeminiService {
     findOne(id: number): string;
     update(id: number, updateGeminiDto: UpdateGeminiDto): string;
     remove(id: number): string;
-    generateContent(query: any): Promise<any>;
+    generateContent(query: {
+        contents: string;
+    }): Promise<any>;
 }

@@ -38,7 +38,12 @@ let GeminiController = class GeminiController {
         return this.geminiService.remove(+id);
     }
     async getGeminiContent(body) {
-        return this.geminiService.generateContent(body);
+        console.log("body", body);
+        const result = await this.geminiService.generateContent(body);
+        return {
+            success: true,
+            data: result
+        };
     }
 };
 exports.GeminiController = GeminiController;
