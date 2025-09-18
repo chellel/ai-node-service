@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const gemini_service_1 = require("./gemini.service");
 const create_gemini_dto_1 = require("./dto/create-gemini.dto");
 const update_gemini_dto_1 = require("./dto/update-gemini.dto");
+const swagger_1 = require("@nestjs/swagger");
 let GeminiController = class GeminiController {
     constructor(geminiService) {
         this.geminiService = geminiService;
@@ -35,6 +36,9 @@ let GeminiController = class GeminiController {
     }
     remove(id) {
         return this.geminiService.remove(+id);
+    }
+    async getGeminiContent(body) {
+        return this.geminiService.generateContent(body);
     }
 };
 exports.GeminiController = GeminiController;
@@ -73,6 +77,14 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], GeminiController.prototype, "remove", null);
+__decorate([
+    (0, common_1.Post)("getGeminiContent"),
+    (0, swagger_1.ApiOperation)({ summary: "调用gemini能力" }),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], GeminiController.prototype, "getGeminiContent", null);
 exports.GeminiController = GeminiController = __decorate([
     (0, common_1.Controller)('gemini'),
     __metadata("design:paramtypes", [gemini_service_1.GeminiService])

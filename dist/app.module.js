@@ -11,12 +11,22 @@ const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const gemini_module_1 = require("./gemini/gemini.module");
+const config_1 = require("@nestjs/config");
+const dotenv = require("dotenv");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [gemini_module_1.GeminiModule],
+        imports: [
+            config_1.ConfigModule.forRoot({
+                expandVariables: true,
+                isGlobal: true,
+                envFilePath: `.env.${process.env.NODE_ENV || 'development'}`,
+                load: [() => dotenv.config()],
+            }),
+            gemini_module_1.GeminiModule
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

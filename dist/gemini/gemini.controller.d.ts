@@ -9,4 +9,5 @@ export declare class GeminiController {
     findOne(id: string): string;
     update(id: string, updateGeminiDto: UpdateGeminiDto): string;
     remove(id: string): string;
+    getGeminiContent(body: any): Promise<any>;
 }
